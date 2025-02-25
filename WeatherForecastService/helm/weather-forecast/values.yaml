@@ -1,0 +1,30 @@
+replicaCount: 1
+
+image:
+  repository: yourcompanyacr.azurecr.io/weather-forecast
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+serviceAccount:
+  create: false
+  name: ""
+  
+ingress:
+  enabled: false
+  name: ""
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+env:
+  - name: ASPNETCORE_ENVIRONMENT
+    value: Production
